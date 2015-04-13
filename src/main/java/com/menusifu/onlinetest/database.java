@@ -18,7 +18,6 @@ public class database {
 
         String driver = "com.mysql.jdbc.Driver";
 
-
         String url = "jdbc:mysql://localhost:22108/kpos";
         String user = "kk";
         String password = "1234";
@@ -53,7 +52,7 @@ public class database {
                 if(name !=null) {
                     name = new String(name.getBytes("ISO-8859-1"),"GB2312");
                 }
-                // ????
+
                 System.out.println(rs.getString("id")+"\t"+rs.getString("first_name") + "\t" + rs.getString("last_name") + "\t" + rs.getString("email"));
             }*/
             return rs;

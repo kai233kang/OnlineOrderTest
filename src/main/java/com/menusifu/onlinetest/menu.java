@@ -60,13 +60,19 @@ public class menu
             System.out.print("dise size is : " + dise.size() + "k is :" + k + "\n");
         }
 
-        reporter menureport = new reporter();
-        System.out.println(menureport);
+
+        ResultSet rs3=reporter.MenuReport();
+
+
         System.out.println("**************");
 
+
         System.out.println("---------------------------------------------------------------------------------------");
+
         driver.close();
         driver.quit();
+
         return rs2;
+
     }
 }

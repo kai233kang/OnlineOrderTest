@@ -1,7 +1,6 @@
 
         package com.menusifu.onlinetest;
 
-        import org.junit.Assert;
         import org.junit.Test;
         import org.openqa.selenium.By;
         import org.openqa.selenium.WebDriver;
@@ -11,11 +10,10 @@
         import java.util.List;
         import java.sql.*;
 
-
 public class onlineordertest {
     @Test
 
-    public void startingTest() throws Exception {
+    public void startingTest(String s) throws Exception {
         ResultSet rs = database.connectdase();
         do {
 
@@ -29,7 +27,7 @@ public class onlineordertest {
 
                 WebDriver driver = new FirefoxDriver();
                 String name = rs.getString("first_name");
-                driver.navigate().to("http://nytest.menusifu.com:8666/test-demonyc#/store");
+                driver.navigate().to(s);
 
                 List<WebElement> category = driver.findElements(By.cssSelector("h4.ng-binding"));
                 System.out.print("xxxxxxxxxxxxxxxxx==>" + "category has open"  + "\n");
@@ -159,16 +157,9 @@ public class onlineordertest {
                         placeorder.click();
                         System.out.println("**************");
                         reporter wrongreport = new reporter();
-                        System.out.println(wrongreport);
                         System.out.println("**************");
 
-
                             Thread.sleep(20000);
-
-
-                        WebElement buttoncontion = driver.findElement(By.className("button"));
-                        System.out.println(buttoncontion.getText());
-                        buttoncontion.click();
 
                     }
 
@@ -179,4 +170,3 @@ public class onlineordertest {
             } while (rs.next()) ;
         }
 }
-
