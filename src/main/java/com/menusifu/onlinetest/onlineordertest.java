@@ -12,64 +12,70 @@
         import java.sql.*;
 
 
-public class onlineordertest
-{
+public class onlineordertest {
     @Test
 
     public void startingTest() throws Exception {
-        int kk=10;
+        int kk = 10;
 
-        do{
+        do {
             ResultSet rs = database.connectdase();
-            System.out.println("database set up ");
 
-            System.out.println("fire fox set up");
-            while (rs.next())
-            {
+            ResultSet rs2 = menu.test();
+            System.out.println("menu is ok");
+            System.out.println("database start success");
+
+            System.out.println("fire fox start success");
+            while (rs.next()) {
+
                 WebDriver driver = new FirefoxDriver();
                 String name = rs.getString("first_name");
-                System.out.println("jin ru xi tong ");
                 driver.navigate().to("http://nytest.menusifu.com:8666/test-demonyc#/store");
 
                 List<WebElement> category = driver.findElements(By.cssSelector("h4.ng-binding"));
-                System.out.print("xxxxxxxxxxx==>" + category.size() + "\n");
-                int k = 0;
-                System.out.print("*****" + k + "\n");
-                for (int i = 0; i < category.size(); i++)
-                {
+                System.out.print("xxxxxxxxxxxxxxxxx==>" + "category has open"  + "\n");
 
-                    System.out.println("category size():" + category.size());
+                // random choose a category and random choose a dise;
 
-                    System.out.println("$$$$$$$$$i de shi shi: "+i+"\n");
-                    category = driver.findElements(By.cssSelector("h4.ng-binding"));
-
-                    category.get(i).click();
-                    System.out.println("category name:" + category.get(i).getText() + "\n");
-                    Thread.sleep(5000);
+                    System.out.println("category name:" + category.get(0).getText());
+                    category.get(0).click();
+                    Thread.sleep(3000);
+                    //System.out.println("category name:" + category.get(i).getText() + "\n");
+                    Thread.sleep(1000);
                     List<WebElement> dise = driver.findElements(By.className("menudishname "));
                     List<WebElement> item = driver.findElements(By.className("menudishprice"));
+                    System.out.println("item name "+item.get(0).getText());
 
+                    item.get(0).click();
+                    System.out.println("iiiiiiiiiiiiiii");
 
-                    System.out.println("dise size :" + dise.size() + "\n");
+                    System.out.println("dise name :" + dise.get(0).getText() + "\n");
+                    System.out.println("dise price :" + item.get(0).getText() + "\n");
+
                     Thread.sleep(1000);
-                    System.out.println("k de shi shi  :" + k + "\n");
-                    Thread.sleep(1000);
 
-                    WebElement tolldiseinchart = driver.findElement(By.className("carttotalnumber "));
-                    System.out.println("****dise in cart***** :" + tolldiseinchart.getText() + "\n");
-                    System.out.println(tolldiseinchart.getText());
-                    int tollnumber = Integer.parseInt(tolldiseinchart.getText());
+
                     List<WebElement> button = driver.findElements(By.className("btn-cart"));
+                    System.out.println("**** button name***** :" + button.get(0).getText() + "\n");
+                    System.out.println("**** button name***** :" + button.get(1).getText() + "\n");
+                    System.out.println("**** button name***** :" + button.get(2).getText() + "\n");
+                    System.out.println("**** number of button***** :" + button.size() + "\n");
+                    button.get(2).click();
 
+                WebElement tolldiseinchart = driver.findElement(By.className("carttotalnumber "));
+                System.out.println("****dises in the shopping cart***** :" + tolldiseinchart.getText() + "\n");
+                System.out.println(tolldiseinchart.getText());
 
-                    //if there are 3 dises in shopping cart ,go to the next page
-                    if (tollnumber == 1)
-                    {
-                        System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+                int tollnumber = Integer.parseInt(tolldiseinchart.getText());
+
+                    //if there are 1 dises in shopping cart ,then go to the next page
+                    if (tollnumber == 1) {
+                        System.out.println("222222222222222222222222222=====> checkout page");
+                        System.out.println("&&&& button name&&&& :" + button.get(0).getText() + "\n");
+                        System.out.println("&&&& button name&&&& :" + button.get(1).getText() + "\n");
+                        System.out.println("&&&& number of button&&& :" + button.size() + "\n");
                         button.get(1).click();
-                        Thread.sleep(5000);
-
-
+                        Thread.sleep(3000);
 
                         WebElement firstname = driver.findElement(By.id("billing:firstname"));
                         firstname.sendKeys(rs.getString("first_name"));
@@ -142,31 +148,13 @@ public class onlineordertest
                         WebElement fax = driver.findElement(By.id("billing:fax"));
                         fax.sendKeys("123456789");
 
-                        //System.out.println();
-
-
-
-                /*check eamil address aganin;
-                WebElement wrongemail = driver.findElement(By.id("advice-validate-email-billing:email"));
-                System.out.println("test stop ,please enter a valid eamill address "+wrongemail.getText());
-                email.sendKeys(rs.getString("menusifu@menusifu.com"));*
-                try {
-                    Thread.sleep(10000);
-                } catch (Exception exc) {
-                }*/ try {
-
                         Thread.sleep(3000);
-                    } catch (Exception exc) {
-                    }
+
 
                         WebElement placeorder = driver.findElement(By.className("btn-checkout"));
                         System.out.println(placeorder.getText());
-                        try {
 
-                            Thread.sleep(3000);
-                        } catch (Exception exc) {
-                        }
-
+                        Thread.sleep(3000);
 
 
                         placeorder.click();
@@ -174,92 +162,22 @@ public class onlineordertest
                         reporter wrongreport = new reporter();
                         System.out.println(wrongreport);
                         System.out.println("**************");
-                        try {
+
 
                             Thread.sleep(20000);
-                        } catch (Exception exc) {
-                        }
 
 
                         WebElement buttoncontion = driver.findElement(By.className("button"));
                         System.out.println(buttoncontion.getText());
                         buttoncontion.click();
 
-
-
-
                     }
-                    else
-                    {
 
-                        for (int j = k; j < dise.size(); j++) {
-                            System.out.print("dishname:" + dise.get(j).getText() + "\n");
-
-                            Thread.sleep(1000);
-
-                            item.get(j).click();
-                            System.out.println("iiiiiiiiiiiiiii");
-                            if (j == k) {
-                                Thread.sleep(1000);
-                                button = driver.findElements(By.className("btn-cart"));
-                                System.out.println("**** number of button***** :" + button.size() + "\n");
-
-                                System.out.println("**** clearn button***** :" + button.get(0).getText() + "\n");
-
-                                System.out.println("**** checkoutbutton***** :" + button.get(1).getText() + "\n");
-                                System.out.println("**** add to cart ***** :" + button.get(2).getText() + "\n");
-
-                                button.get(2).click();
-
-                                Thread.sleep(3000);
-                            }
-
-                            int buttonsize = button.size();
-                            if (j != k) {
-
-                                Thread.sleep(2000);
-                                WebElement guan = driver.findElement(By.className("fa-times"));
-                                guan.click();
-                            }
-                            // x dian diao hou  cha kan total shifou wei 3 ruguo bushi jixuxunhuan
-
-
-                            Thread.sleep(2000);
-
-                            k = dise.size();
-                            System.out.print("after 1 time: " + dise.size() + "k is :" + k + "\n");
-
-                        }
-
-                    }
+                    driver.close();
                 }
 
-                /*for (int j = 0; j < dise.size(); j++) {
-                    System.out.println("****************");
-                    System.out.println("number of item:" + dise.size());
-                    System.out.println("j  is " + j);
-                    if(dise.get(j).getText()!=null){
-                    dise.get(j).click();}
-                    if (dise.get(1).getText().indexOf("$") != -1) {
-                        System.out.print(dise.get(1).getText());
-                        dise.get(1).click();
-                        System.out.println("&&&&&&&&");
-                    }*/
 
-
-                System.out.println("fffffffff");
-                Thread.sleep(3000);
-                System.out.println("ggggggg");
-
-
-                Thread.sleep(3000);
-
-                driver.close();
-            }
-
-
-        }while(kk==10);
-    }
+            } while (kk == 10) ;
+        }
 }
-
 

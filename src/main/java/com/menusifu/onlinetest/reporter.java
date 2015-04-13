@@ -41,5 +41,22 @@ public class reporter {
         }
 
     }
+    public void menureport() {
+
+        String fileName = "C:/menureport.txt";
+        try {
+            BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
+            out.write("online order test report of :");
+            out.newLine();
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//??????
+            System.out.println(df.format(new Date()));// new Date()?????????
+            out.write("online order test report of :" + df);
+            out.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
 
 }

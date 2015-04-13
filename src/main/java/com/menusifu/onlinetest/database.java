@@ -19,9 +19,9 @@ public class database {
         String driver = "com.mysql.jdbc.Driver";
 
 
-        String url = "jdbc:mysql://127.0.0.1:22108/kpos";
-        String user = "root";
-        String password = "N0mur@4$99!";
+        String url = "jdbc:mysql://localhost:22108/kpos";
+        String user = "kk";
+        String password = "1234";
         ResultSet rs;
         try {
 
