@@ -24,15 +24,15 @@ public class reporter {
     String DeliveryMethod;
     String tips;
 
-    public void wrongreport() {
+    public void ErrorReport() {
 
         String fileName = "C:/kuka.txt";
         try {
             BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
             out.write("online order test report of :");
             out.newLine();
-            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//??????
-            System.out.println(df.format(new Date()));// new Date()?????????
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            System.out.println(df.format(new Date()));
             out.write("online order test report of :" + df);
             out.close();
         } catch (IOException e) {
@@ -41,12 +41,12 @@ public class reporter {
         }
 
     }
-    public void menureport() {
+    public void MenuReport() {
 
         String fileName = "C:/menureport.txt";
         try {
             BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
-            out.write("online order test report of :");
+            out.write("online order test report of  :");
             out.newLine();
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//??????
             System.out.println(df.format(new Date()));// new Date()?????????

@@ -16,10 +16,9 @@ public class onlineordertest {
     @Test
 
     public void startingTest() throws Exception {
-        int kk = 10;
-
+        ResultSet rs = database.connectdase();
         do {
-            ResultSet rs = database.connectdase();
+
 
             ResultSet rs2 = menu.test();
             System.out.println("menu is ok");
@@ -177,7 +176,7 @@ public class onlineordertest {
                 }
 
 
-            } while (kk == 10) ;
+            } while (rs.next()) ;
         }
 }
 
