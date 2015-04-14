@@ -79,23 +79,21 @@ public class onlineordertest {
                         if (rs.getString("first_name") == null) {
                             firstname.sendKeys("nofirestname");
                         } else {
-                            firstname.sendKeys(rs.getString("last_name"));
+                            firstname.sendKeys(rs.getString("first_name"));
                         }
 
                         WebElement lastname = driver.findElement(By.id("billing:lastname"));
-
+                        lastname.sendKeys(rs.getString("last_name"));
                         if (rs.getString("last_name") == null) {
                             lastname.sendKeys("nolastname");
                         } else {
                             lastname.sendKeys(rs.getString("last_name"));
                         }
 
-                        //WebElement company = driver.findElement(By.id("billing:company"));
-                        //company.sendKeys("menusifu");
-
+                        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EMAIL ADDRESS MUST BE MENUSIFU@MENUSIFU.COM//
                         WebElement email = driver.findElement(By.id("billing:email"));
                         email.sendKeys("menusifu@menusifu.com");
-
+                        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EMAIL ADDRESS MUST BE MENUSIFU@MENUSIFU.COM//
 
                         WebElement address = driver.findElement(By.id("billing:street1"));
                         if (rs.getString("address1") == null) {

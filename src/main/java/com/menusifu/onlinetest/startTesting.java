@@ -5,6 +5,7 @@ import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,8 +15,9 @@ import java.awt.event.ActionListener;
  */
 public class startTesting {
     private JButton button1;
-    private JButton button2;
+    private JButton stopTestingButton;
     private JPanel JPanel1;
+    private JLabel Jlabel;
     private JTextField stingTextField;
 
     public startTesting() {
@@ -23,8 +25,7 @@ public class startTesting {
             public void actionPerformed(ActionEvent actionEvent) {
                 System.out.println("test");
 
-
-                        onlineordertest a = new onlineordertest();
+                onlineordertest a = new onlineordertest();
                 try {
                     a.startingTest(stingTextField.getText());
                 } catch (Exception e) {
@@ -35,6 +36,10 @@ public class startTesting {
         });
     }
 
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("startTesting");
@@ -43,6 +48,11 @@ public class startTesting {
         frame.pack();
         frame.setVisible(true);
 
+    }
+
+    private void createUIComponents() {
+
+        // TODO: place custom component creation code here
     }
 
     {
@@ -62,26 +72,30 @@ public class startTesting {
     private void $$$setupUI$$$() {
         JPanel1 = new JPanel();
         JPanel1.setLayout(new GridLayoutManager(3, 2, new Insets(0, 0, 0, 0), -1, -1));
+        JPanel1.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Menusifu OnlineOrder Test Tool", TitledBorder.CENTER, TitledBorder.ABOVE_TOP, new Font(JPanel1.getFont().getName(), JPanel1.getFont().getStyle(), JPanel1.getFont().getSize()), new Color(-16777216)));
         final JPanel panel1 = new JPanel();
         panel1.setLayout(new GridLayoutManager(2, 2, new Insets(0, 0, 0, 0), -1, -1));
         JPanel1.add(panel1, new GridConstraints(2, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         button1 = new JButton();
-        button1.setText("Button");
-        button1.setMnemonic('B');
+        button1.setText("Start Testing");
+        button1.setMnemonic('S');
         button1.setDisplayedMnemonicIndex(0);
         panel1.add(button1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final Spacer spacer1 = new Spacer();
         panel1.add(spacer1, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
-        button2 = new JButton();
-        button2.setText("Button");
-        panel1.add(button2, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        stopTestingButton = new JButton();
+        stopTestingButton.setForeground(new Color(-7066848));
+        stopTestingButton.setText("Stop Testing");
+        stopTestingButton.setMnemonic('S');
+        stopTestingButton.setDisplayedMnemonicIndex(0);
+        panel1.add(stopTestingButton, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final Spacer spacer2 = new Spacer();
         JPanel1.add(spacer2, new GridConstraints(1, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
-        final JLabel label1 = new JLabel();
-        label1.setText("Label");
-        JPanel1.add(label1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        Jlabel = new JLabel();
+        Jlabel.setText("Test Url");
+        JPanel1.add(Jlabel, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         stingTextField = new JTextField();
-        stingTextField.setText("");
+        stingTextField.setText("http://nytest.menusifu.com:8666/test-demonyc#/store");
         JPanel1.add(stingTextField, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
     }
 

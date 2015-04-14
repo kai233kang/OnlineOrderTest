@@ -34,9 +34,10 @@ public class database {
             Statement statement = conn.createStatement();
 
             //String sql = "select a.first_name,a.last_name,a.email,b.*  from customer_info a join address_info b on a.id=b.customer_id";
-            String sql = "select a.first_name,a.last_name,a.email,b.* ,c.* from customer_info a join address_info b join phone_info c on a.id=b.customer_id=c.customer_id";
-
+            //String sql = "select a.first_name,a.last_name,a.email,b.* ,c.* from customer_info a join address_info b join phone_info c on a.id=b.customer_id=c.customer_id";
+            String sql = "select first_name from customer_info";
             rs = statement.executeQuery(sql);
+            System.out.println("9999999");
 
             /*System.out.println("-----------------");
             System.out.println("customer_info list");
