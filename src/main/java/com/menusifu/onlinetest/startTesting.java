@@ -25,9 +25,9 @@ public class startTesting {
             public void actionPerformed(ActionEvent actionEvent) {
                 System.out.println("test");
 
-                onlineordertest a = new onlineordertest();
+                onlineordertest startbutton = new onlineordertest();
                 try {
-                    a.startingTest(stingTextField.getText());
+                    startbutton.startingTest(stingTextField.getText());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

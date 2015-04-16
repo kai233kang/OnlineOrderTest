@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.sql.ResultSet;
 import java.util.List;
 
@@ -14,65 +15,49 @@ import java.util.List;
 public class menu
 {
 
-    public static ResultSet test() throws InterruptedException {
+    public static void test() throws InterruptedException {
 
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-       ResultSet rs2 = null;
 
         WebDriver driver = new FirefoxDriver();
 
         driver.navigate().to("http://nytest.menusifu.com:8666/test-demonyc#/store");
+        List<WebElement> group = driver.findElements(By.cssSelector("ul.nav-tabs"));
+        List<WebElement> categorygroup = group.get(0).findElements(By.cssSelector("li.ng-isolate-scope"));
+        System.out.println("group size is " + categorygroup.size());
+        System.out.println("group name is " + categorygroup.get(0).getText());
 
-        List<WebElement> category = driver.findElements(By.cssSelector("h4.ng-binding"));
-
-        int k = 0;
-        for (int i = 0; i < category.size(); i++) {
-
-            System.out.println("category size():" + category.size());
-
-            //category = driver.findElements(By.cssSelector("h4.ng-binding"));
-
-            System.out.println("category name:" + category.get(i).getText() + "\n");
-
-            category.get(i).click();
-            //System.out.println("category name:" + category.get(i).getText() + "\n");
+        for (int g = 0; g < categorygroup.size(); g++) {
+            List<WebElement> kk = driver.findElements(By.cssSelector("div.active"));
 
 
-            List<WebElement> dise = driver.findElements(By.className("menudishname "));
+            for (int k = 0; k < kk.size(); k++) {
+                System.out.println("k is: " + k);
 
-            List<WebElement> item = driver.findElements(By.className("menudishprice"));
+                List<WebElement> category = kk.get(k).findElements(By.cssSelector("h4.ng-binding"));
+                System.out.println("category size  " + category.size());
+                System.out.print("category name========>:" + category.get(g).getText() + "\n");
+                category.get(k).click();
 
 
-            System.out.println("dise size :" + dise.size() + "\n");
-            //System.out.println("price :" + item.get(i).getText() + "\n");
+                List<WebElement> kk2 = kk.get(k).findElements(By.cssSelector("td.menudishname.text-left"));
+
+                for(int nod=0;nod<=5;nod++){
+                    reporter.MenuReport(kk2.get(nod).getText());}
+
+                System.out.println(kk2.size());
+                /*for (int i = 0; i < kk2.size(); i++) {
+
+                    System.out.println("dise name========>:" + kk2.get(i).getText() + "\n");
+                    kk2.get(i).click();
+
+                    WebElement guan = driver.findElement(By.className("fa-times"));
+                    System.out.println("gunnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn :" + "\n");
+                    guan.click();
+                }*/
 
 
-            for (int j = k; j < dise.size(); j++) {
-
-                System.out.print("===============>dishname:" + dise.get(j).getText() + "diseprice:" + item.get(j).getText() + "\n");
-                System.out.print("===============>disesize" + dise.size() + "\n");
-                //if(item.get(j).getText()="Null")
-                item.get(j).click();
-                WebElement guan = driver.findElement(By.className("fa-times"));
-                guan.click();
             }
-            k = dise.size();
-            System.out.print("dise size is : " + dise.size() + "k is :" + k + "\n");
         }
-
-
-        ResultSet rs3=reporter.MenuReport();
-
-
-        System.out.println("**************");
-
-
-        System.out.println("---------------------------------------------------------------------------------------");
-
-        driver.close();
-        driver.quit();
-
-        return rs2;
-
     }
 }

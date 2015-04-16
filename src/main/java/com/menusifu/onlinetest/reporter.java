@@ -27,15 +27,18 @@ public class reporter {
 
     public static ResultSet ErrorReport() throws InterruptedException
     {
+        CreateFileUtil file1= new CreateFileUtil();
+        file1.createFile("C:/Users/kai/Documents/report/ErrorReport.txt");
 
-        String fileName = "C:/menureport.txt";
+
+        String errorfileName = "C:/Users/kai/Documents/report/ErrorReport";
         try {
 
-            BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
-            out.write("online order test report of  :");
+            BufferedWriter out = new BufferedWriter(new FileWriter(errorfileName));
+            out.write("error report :");
             out.newLine();
-            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//??????
-            System.out.println(df.format(new Date()));// new Date()?????????
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            System.out.println(df.format(new Date()));
             out.write("online order test report of :" + df);
             out.close();
         } catch (IOException e) {
@@ -45,18 +48,25 @@ public class reporter {
 
         return null;
     }
-    public static ResultSet MenuReport() throws InterruptedException
+    public static ResultSet MenuReport(String menu) throws InterruptedException
     {
 
-        String fileName = "C:/menureport.txt";
-        try {
+        ResultSet rs = null;
+        CreateFileUtil file1= new CreateFileUtil();
+        file1.createFile("C:/Users/kai/Documents/report/MenuReport.txt");
 
+
+        String fileName = "C:/Users/kai/Documents/report/MenuReport.txt";
+        try {
             BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
-            out.write("online order test report of  :");
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String today=df.format(new Date());
+            out.write(today+"\n");
+
+            out.write(menu);
             out.newLine();
-            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//??????
-            System.out.println(df.format(new Date()));// new Date()?????????
-            out.write("online order test report of :" + df);
+
+            System.out.println(df.format(new Date()));
             out.close();
         } catch (IOException e) {
             // TODO Auto-generated catch block
