@@ -26,6 +26,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="kpos" target="1.5" />
       <module name="OnlineOrderTest" target="1.5" />
     </bytecodeTargetLevel>
   </component>

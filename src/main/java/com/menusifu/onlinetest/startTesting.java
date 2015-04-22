@@ -4,6 +4,7 @@ import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
 
+import javax.mail.MessagingException;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
@@ -19,6 +20,8 @@ public class startTesting {
     private JPanel JPanel1;
     private JLabel Jlabel;
     private JTextField stingTextField;
+    private JTextField textField1;
+    private JTextField textField2;
 
     public startTesting() {
         button1.addActionListener(new ActionListener() {
@@ -28,6 +31,8 @@ public class startTesting {
                 onlineordertest startbutton = new onlineordertest();
                 try {
                     startbutton.startingTest(stingTextField.getText());
+                   //
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -41,12 +46,14 @@ public class startTesting {
         return super.hashCode();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MessagingException {
         JFrame frame = new JFrame("startTesting");
         frame.setContentPane(new startTesting().JPanel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+
+
 
     }
 
@@ -71,11 +78,12 @@ public class startTesting {
      */
     private void $$$setupUI$$$() {
         JPanel1 = new JPanel();
-        JPanel1.setLayout(new GridLayoutManager(3, 2, new Insets(0, 0, 0, 0), -1, -1));
+        JPanel1.setLayout(new GridLayoutManager(5, 2, new Insets(0, 0, 0, 0), -1, -1, false, true));
+        JPanel1.setBackground(new Color(-2825));
         JPanel1.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Menusifu OnlineOrder Test Tool", TitledBorder.CENTER, TitledBorder.ABOVE_TOP, new Font(JPanel1.getFont().getName(), JPanel1.getFont().getStyle(), JPanel1.getFont().getSize()), new Color(-16777216)));
         final JPanel panel1 = new JPanel();
         panel1.setLayout(new GridLayoutManager(2, 2, new Insets(0, 0, 0, 0), -1, -1));
-        JPanel1.add(panel1, new GridConstraints(2, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        JPanel1.add(panel1, new GridConstraints(4, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         button1 = new JButton();
         button1.setText("Start Testing");
         button1.setMnemonic('S');
@@ -90,13 +98,28 @@ public class startTesting {
         stopTestingButton.setDisplayedMnemonicIndex(0);
         panel1.add(stopTestingButton, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final Spacer spacer2 = new Spacer();
-        JPanel1.add(spacer2, new GridConstraints(1, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
+        JPanel1.add(spacer2, new GridConstraints(3, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
         Jlabel = new JLabel();
         Jlabel.setText("Test Url");
         JPanel1.add(Jlabel, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         stingTextField = new JTextField();
         stingTextField.setText("http://nytest.menusifu.com:8666/test-demonyc#/store");
         JPanel1.add(stingTextField, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
+        final JLabel label1 = new JLabel();
+        label1.setText("User");
+        label1.setDisplayedMnemonic('U');
+        label1.setDisplayedMnemonicIndex(0);
+        JPanel1.add(label1, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        textField1 = new JTextField();
+        textField1.setText("");
+        JPanel1.add(textField1, new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
+        final JLabel label2 = new JLabel();
+        label2.setText("Password");
+        label2.setDisplayedMnemonic('P');
+        label2.setDisplayedMnemonicIndex(0);
+        JPanel1.add(label2, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        textField2 = new JTextField();
+        JPanel1.add(textField2, new GridConstraints(2, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
     }
 
     /**
