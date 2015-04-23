@@ -248,8 +248,13 @@
                                         Thread.sleep(20000);
 
                                     }
-                            SimpleMail mailutils = new SimpleMail();
-                            SimpleMail.sendMail("test", "test", "kangkai@menusifu.com", "info@menusifu.com");
+
+                            //如果 没有下单成功 发送邮件
+                            /*WebElement errorpage= driver.findElement(By.className());
+
+                            if(errorpage.getText()=="not in "){
+                                    simplegmail mailutils = new simplegmail();
+                                    simplegmail.sendMail("test", "test", "kangkai@menusifu.com", "kai233kang@hotmail.com");}*/
 
 
                                     count++;
