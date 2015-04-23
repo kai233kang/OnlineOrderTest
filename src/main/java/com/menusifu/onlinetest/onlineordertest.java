@@ -253,8 +253,8 @@
                             /*WebElement errorpage= driver.findElement(By.className());
 
                             if(errorpage.getText()=="not in "){
-                                    simplegmail mailutils = new simplegmail();
-                                    simplegmail.sendMail("test", "test", "kangkai@menusifu.com", "kai233kang@hotmail.com");}*/
+                                    SentEmail mailutils = new SentEmail();
+                                    SentEmail.sendMail("test", "test", "kangkai@menusifu.com", "kai233kang@hotmail.com");}*/
 
 
                                     count++;
